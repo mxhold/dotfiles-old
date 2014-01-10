@@ -1,13 +1,18 @@
-alias l="ls -lAhG"
+# Use GNU Core Utils for additional options
+# `brew install coreutils`
+alias l="gls -lAhF --color --group-directories-first"
 
+# `dot .zshrc`
 dot() {
   echo "Moving $1 to ~/dotfiles and symlinking"
   mv $1 /Users/max/dotfiles/$1
   ln -s /Users/max/dotfiles/$1 /Users/max/$1
 }
 
+# Reload .zshrc
 alias z!="source ~/.zshrc && echo '.zshrc reloaded!'"
 
+# Extract most archives
 extract () {
     if [ -f $1 ] ; then
       case $1 in
