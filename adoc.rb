@@ -2,7 +2,7 @@
 # Outputs list of aliases/functions from file provided
 
 alias_pattern = /^alias ([^=]+)=["'](.+)["']$/
-comment_pattern = /^(#.+)$/
+comment_pattern = /^(#[^#\n]+)$/
 function_pattern = /^(\w+)\s?\(\)\s?{$/
 aliases = {}
 

@@ -1,11 +1,43 @@
+###############################################################################
+## Meta
+
+# Reload .zshrc
+alias z!="source ~/.zshrc && echo '.zshrc reloaded!'"
+
 # Show current aliases from ~/.aliases
 alias adoc="~/dotfiles/adoc.rb .aliases"
+
+# Show most frequently used commands
+alias most="awk '{arr[\$0]++}END{for (a in arr) print arr[a], a}' ~/.histfile | sort -rn | head -n 20"
+
+# Moves to ~/dotfiles and symlinks to ~
+dot() {
+  echo "Moving $1 to ~/dotfiles and symlinking"
+  mv $1 /Users/max/dotfiles/$1
+  ln -s /Users/max/dotfiles/$1 /Users/max/$1
+}
+
+###############################################################################
+## Utilities
+alias ..='cd ..'
+alias ...='cd ../../'
+alias ....='cd ../../../'
+
+alias c="clear"
+
+## Use GNU Core Utils ls for additional options
+## `brew install coreutils`
+alias l="gls -lAhF --color --group-directories-first"
 
 # Copy to clipboard
 cb() {
   echo -n "$*" | pbcopy
 }
 
+###############################################################################
+## Git
+
+alias g="git"
 alias gdiff="git diff --minimal --color"
 alias gl="git log --abbrev-commit --notes --date=iso --graph"
 alias gs="git status -s"
@@ -34,33 +66,12 @@ gc() {
   fi
 }
 
+###############################################################################
+## Programs
 
- # Use GNU Core Utils ls for additional options
- # `brew install coreutils`
-alias l="gls -lAhF --color --group-directories-first"
-
-alias ..='cd ..'
-alias ...='cd ../../'
-alias ....='cd ../../../'
-
-alias c="clear"
+alias r="rails"
 alias v="vim"
 alias va="vim ~/.aliases"
-alias r="rails"
-alias g="git"
-
-# Show most frequently used commands
-alias most="awk '{arr[\$0]++}END{for (a in arr) print arr[a], a}' ~/.histfile | sort -rn | head -n 20"
-
-# Moves to ~/dotfiles and symlinks to ~
-dot() {
-  echo "Moving $1 to ~/dotfiles and symlinking"
-  mv $1 /Users/max/dotfiles/$1
-  ln -s /Users/max/dotfiles/$1 /Users/max/$1
-}
-
-# Reload .zshrc
-alias z!="source ~/.zshrc && echo '.zshrc reloaded!'"
 
 # Extracts most archives
 extract () {
