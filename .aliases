@@ -1,5 +1,7 @@
+# Show current aliases from ~/.aliases
 alias adoc="~/dotfiles/adoc.rb .aliases"
 
+# Copy to clipboard
 cb() {
   echo -n "$*" | pbcopy
 }
@@ -8,13 +10,12 @@ alias gdiff="git diff --minimal --color"
 alias gl="git log --abbrev-commit --notes --date=iso --graph"
 alias gs="git status -s"
 alias ga="git add"
-alias gc="git commit -m"
 alias gpr="git pull --rebase"
 alias gps="git push"
 alias gco="git checkout"
 
+# git branch with color
 gb() {
-  # git branch with color
   if [ ! -z $1 ]
   then
     git branch $*
@@ -23,9 +24,19 @@ gb() {
   fi
 }
 
+# git commit with message
+gc() {
+  if [ ! -z $1 ]
+  then
+    git commit -m $*
+  else
+    git commit
+  fi
+}
 
-# Use GNU Core Utils for additional options
-# `brew install coreutils`
+
+ # Use GNU Core Utils ls for additional options
+ # `brew install coreutils`
 alias l="gls -lAhF --color --group-directories-first"
 
 alias c="clear"
@@ -36,8 +47,8 @@ alias g="git"
 
 alias most="awk '{arr[\$0]++}END{for (a in arr) print arr[a], a}' ~/.histfile | sort -rn | head -n 20"
 
+# Moves to ~/dotfiles and symlinks to ~
 dot() {
-  # Moves to ~/dotfiles and symlinks to ~
   echo "Moving $1 to ~/dotfiles and symlinking"
   mv $1 /Users/max/dotfiles/$1
   ln -s /Users/max/dotfiles/$1 /Users/max/$1
@@ -46,24 +57,24 @@ dot() {
 # Reload .zshrc
 alias z!="source ~/.zshrc && echo '.zshrc reloaded!'"
 
+# Extracts most archives
 extract () {
-  # Extracts most archives
-    if [ -f $1 ] ; then
-      case $1 in
-        *.tar.bz2)   tar xjf $1     ;;
-        *.tar.gz)    tar xzf $1     ;;
-        *.bz2)       bunzip2 $1     ;;
-        *.rar)       unrar e $1     ;;
-        *.gz)        gunzip $1      ;;
-        *.tar)       tar xf $1      ;;
-        *.tbz2)      tar xjf $1     ;;
-        *.tgz)       tar xzf $1     ;;
-        *.zip)       unzip $1       ;;
-        *.Z)         uncompress $1  ;;
-        *.7z)        7z x $1        ;;
-        *)     echo "'$1' cannot be extracted via extract()" ;;
-         esac
-     else
-         echo "'$1' is not a valid file"
-     fi
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1     ;;
+      *.tar.gz)    tar xzf $1     ;;
+      *.bz2)       bunzip2 $1     ;;
+      *.rar)       unrar e $1     ;;
+      *.gz)        gunzip $1      ;;
+      *.tar)       tar xf $1      ;;
+      *.tbz2)      tar xjf $1     ;;
+      *.tgz)       tar xzf $1     ;;
+      *.zip)       unzip $1       ;;
+      *.Z)         uncompress $1  ;;
+      *.7z)        7z x $1        ;;
+      *)     echo "'$1' cannot be extracted via extract()" ;;
+       esac
+   else
+       echo "'$1' is not a valid file"
+   fi
 }

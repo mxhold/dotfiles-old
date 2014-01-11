@@ -1,24 +1,29 @@
 #!/usr/bin/env ruby
-# Outputs simple documentation of aliases file provided
-# Shows expansion of alias or first line of functions
+# Outputs list of aliases/functions from file provided
 
 alias_pattern = /^alias ([^=]+)=["']([^"']+)["']$/
+comment_pattern = /^(#.+)$/
 function_pattern = /^(\w+)\s?\(\)\s?{$/
 aliases = {}
 
-function_name = nil
+comment = nil
 
 ARGF.each_line do |line|
-  match_data = line.match(alias_pattern)# || line.match(function_pattern)
+  match_data = line.match(alias_pattern) || line.match(function_pattern)
+  comment_match = line.match(comment_pattern)
+  
   if match_data
     alias_name = match_data[1]
-    expansion = match_data[2]
-    aliases[alias_name] = expansion
-  elsif match_data = line.match(function_pattern)
-    function_name = match_data[1]
-  elsif function_name
-    aliases[function_name] = line[/^\s+(.+)$/, 1]
-    function_name = nil
+    
+    if comment
+      aliases[alias_name] = comment
+      comment = nil
+    else
+      expansion = match_data[2]
+      aliases[alias_name] = expansion
+    end
+  elsif comment_match
+    comment = comment_match[1]
   end
 end
 
