@@ -39,6 +39,10 @@ gc() {
  # `brew install coreutils`
 alias l="gls -lAhF --color --group-directories-first"
 
+alias ..='cd ..'
+alias ...='cd ../../'
+alias ....='cd ../../../'
+
 alias c="clear"
 alias v="vim"
 alias va="vim ~/.aliases"
