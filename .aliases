@@ -1,6 +1,36 @@
+cb() {
+  echo -n "$*" | pbcopy
+}
+
+alias gdiff="git diff --minimal --color"
+alias gl="git log --abbrev-commit --notes --date=iso --graph"
+alias gs="git status -s"
+alias ga="git add"
+alias gc="git commit -m"
+alias gpr="git pull --rebase"
+alias gps="git push"
+
+gb() {
+  if [ ! -z $1 ]
+  then
+    git branch $*
+  else
+    git branch -a --color
+  fi
+}
+
+
 # Use GNU Core Utils for additional options
 # `brew install coreutils`
 alias l="gls -lAhF --color --group-directories-first"
+
+alias c="clear"
+alias v="vim"
+alias va="vim ~/.aliases"
+alias r="rails"
+alias g="git"
+
+alias most="awk '{arr[\$0]++}END{for (a in arr) print arr[a], a}' ~/.histfile | sort -rn | head -n 20"
 
 # `dot .zshrc`
 dot() {
