@@ -45,6 +45,7 @@ alias va="vim ~/.aliases"
 alias r="rails"
 alias g="git"
 
+# Show most frequently used commands
 alias most="awk '{arr[\$0]++}END{for (a in arr) print arr[a], a}' ~/.histfile | sort -rn | head -n 20"
 
 # Moves to ~/dotfiles and symlinks to ~
