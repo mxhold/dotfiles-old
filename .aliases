@@ -27,7 +27,7 @@ alias c="clear"
 
 ## Use GNU Core Utils ls for additional options
 ## `brew install coreutils`
-alias l="gls -lAhF --color --group-directories-first"
+alias l="gls -lAhF --color --group-directories-first --ignore='.DS_Store'"
 
 # Copy to clipboard
 cb() {
