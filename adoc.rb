@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 # Outputs list of aliases/functions from file provided
+# Run with ./adoc.rb ~/.aliases
 
 alias_pattern = /^alias ([^=]+)=["'](.+)["']$/
 comment_pattern = /^(#[^#\n]+)$/
