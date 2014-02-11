@@ -1,11 +1,23 @@
+# Edit notes
+alias n="vim ~/notes.md"
+# Commit and push notes to Github gist
+np() {
+  cd /Users/max/Documents/notes
+  git commit -am "Autocommit from alias"
+  git push
+  cd -
+}
+
 ###############################################################################
 ## Meta
 
 # Reload .zshrc
 alias z!="source ~/.zshrc && echo '.zshrc reloaded!'"
 
+alias va="vim ~/.aliases"
+
 # Show current aliases from ~/.aliases
-alias adoc="~/dotfiles/adoc.rb .aliases"
+alias adoc="~/dotfiles/adoc.rb ~/.aliases"
 
 # Show most frequently used commands
 alias most="awk '{arr[\$0]++}END{for (a in arr) print arr[a], a}' ~/.histfile | sort -rn | head -n 20"
@@ -41,11 +53,12 @@ cb() {
 alias g="git"
 alias gdiff="git diff --minimal --color"
 alias gl="git log --abbrev-commit --notes --date=iso --graph"
-alias gs="git status -s"
+alias gs="git status"
 alias ga="git add"
-alias gpr="git pull --rebase"
-alias gps="git push"
+alias gpl="git pull"
+alias gp="git push"
 alias gco="git checkout"
+alias gc="git commit"
 
 # git branch with color
 gb() {
@@ -57,22 +70,11 @@ gb() {
   fi
 }
 
-# git commit with message
-gc() {
-  if [ ! -z $1 ]
-  then
-    git commit -m $*
-  else
-    git commit
-  fi
-}
-
 ###############################################################################
 ## Programs
 
 alias r="rails"
 alias v="vim"
-alias va="vim ~/.aliases"
 
 # Extracts most archives
 extract () {
