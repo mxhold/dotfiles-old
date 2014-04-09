@@ -23,7 +23,7 @@ alias adoc="~/dotfiles/adoc.rb ~/.aliases"
 alias most="awk '{arr[\$0]++}END{for (a in arr) print arr[a], a}' ~/.histfile | sort -rn | head -n 20"
 
 # Moves to ~/dotfiles and symlinks to ~
-dot() {
+dotfile() {
   echo "Moving $1 to ~/dotfiles and symlinking"
   mv $1 /Users/max/dotfiles/$1
   ln -s /Users/max/dotfiles/$1 /Users/max/$1
