@@ -1,0 +1,5 @@
+# Install
+
+```
+ruby install.rb
+```
