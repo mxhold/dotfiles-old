@@ -28,3 +28,6 @@ source /Users/max/.aliases
 setopt   appendhistory
 setopt   incappendhistory     # New history lines are added to the $HISTFILE incrementally (as soon as
                               # they are entered), rather than waiting until the shell is killed
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
