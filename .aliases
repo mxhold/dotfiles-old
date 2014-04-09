@@ -97,3 +97,5 @@ extract () {
        echo "'$1' is not a valid file"
    fi
 }
+
+alias stree="open -a SourceTree"
